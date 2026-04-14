@@ -1,0 +1,13 @@
+FUNCTION infixToPrefix(expression):
+
+    REVERSE expression
+
+    FOR each character in expression:
+        IF '(' → replace with ')'
+        IF ')' → replace with '('
+
+    postfix = infixToPostfix(expression)
+
+    prefix = REVERSE(postfix)
+
+    RETURN prefix
