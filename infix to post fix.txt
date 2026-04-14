@@ -1,0 +1,21 @@
+FUNCTION infixToPostfix(expression):
+    CREATE empty stack S
+    CREATE empty string result
+    FOR each character ch in expression:
+        IF ch is operand:
+            ADD ch to result
+        ELSE IF ch == '(':
+            PUSH ch to S
+        ELSE IF ch == ')':
+            WHILE top of S != '(':
+                POP from S and ADD to result
+            POP '(' from S
+        ELSE (ch is operator):
+            WHILE S is not empty AND
+                  precedence(ch) <= precedence(top of S):
+                POP from S and ADD to result
+            PUSH ch to S
+    WHILE S is not empty:
+        POP from S and ADD to result
+    RETURN result
+
